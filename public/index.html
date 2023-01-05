@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Request Bin HomePage</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <script src="javascripts/handlebars-v4.7.7.js"></script>
+    <script defer type="module" src="javascripts/index.js"></script>
+    <script defer type="module" src="javascripts/hbtemplate.js"></script>
+    <script defer type="module" src="javascripts/localStorage.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+    <nav>
+      <h1>Gouda Request</h1>
+      <button id="yourBins" class="btn">Bins</button>
+      <!-- <a id="yourBins" class="nav-item" href="#">Bins</a> -->
+      <button id="createBin" class="btn">Create Bin</button>
+    </nav>
+
+    <main id="root">
+      <!-- render templates here -->
+    </main>
+
+    <script type="text/x-handlebars" id="request">
+      <li class="request-item">
+        <hr>
+        <div class="request-method">
+          {{method}}
+        </div>
+        <div class="request-headers-list">
+          {{#each (parseHeaders headers)}}
+            <p>{{name}}: {{value}}</p>
+          {{/each}}
+        </div>
+        <div class="request-body">
+          {{body}}
+        </div>
+        <hr>
+      </li>
+    </script>
+
+
+    <script type="text/x-handlebars" id="bin">
+      <div class="binbox">
+        <h2>{{path}}</h2>
+      </div>
+      <div class="binbox">
+        <div class="requests">
+          <ul class="request-list">
+            {{#each requestList}}
+              {{> request}}
+            {{/each}}
+          </ul>
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" id="your-bins">
+      <div class="requests">
+        <ul id="bin-links" class="request-list">
+          {{#each bins}} 
+          <li class="request-list-item">
+            <div class="row">
+              <div class="bin-identifier">
+                <a id="{{pathkey}}" href="bins/{{pathkey}}">
+                  {{pathkey}}
+                </a>
+              </div>
+              <div class="timestamp">
+                <p>{{dateCreated}}<p>
+              </div>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </script>
+
+  </body>
+</html>

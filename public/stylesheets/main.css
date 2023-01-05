@@ -1,0 +1,32 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+button {
+  font-family: inherit;
+  font-size:1rem;
+}
+
+btn {
+  border:none;
+  background:none;
+  box-shadow:1px 1px 2px rgba(21, 21, 21, 0.1);
+  cursor:pointer;
+  font-size:1.2rem;
+  margin:0 1rem;
+  padding:.25rem 2rem;
+  transition:all .25s ease-in-out;
+}
+
+.btn:focus, .btn:hover {
+  box-shadow:1px 1px 2px rgba(21, 21, 21, 0.2);
+}
+
+.btn:hover {
+  background: rgb(143, 195, 255);
+}
+
+li::marker {
+  content: counter(list-item) "› ";
+  color: hotpink;
+}
